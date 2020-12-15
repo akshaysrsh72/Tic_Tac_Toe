@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>tic tac toe</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <style type="text/css">
+        body{
+             font-family:  "Comic Sans MS", cursive, sans-serif;
+             background-color: rgba(0,0,0,0.9);
+
+        }
+        #box1{
+            float: left;
+            width: 25%;
+            margin: auto;
+            border: solid 5px teal;
+            padding-top: 10px;
+            margin-top: 10px;
+            margin-left: 124px;
+            background-color: white;
+             min-height: 572px;
+             font-family:  "Comic Sans MS", cursive, sans-serif;
+             background-color: rgba(0,0,0,0.8);
+             color: white;
+        }
+        #box2{
+            float: left;
+            width: 55%;
+            border: solid 5px teal;
+            margin-top: 10px;
+            margin-left: 1px;
+
+            min-height: 582px;
+            background-color: rgba(255,0,0,0.3);
+        }
+        #menu{
+            text-align: center;
+            margin-top: 115px;
+
+
+        }
+        .main_head{
+            text-align: center;
+            background-color: darkgreen;
+            padding: 10px;
+            width: 90%;
+            margin: auto;
+            border-radius: 50px; 
+        }
+        #sub_head{
+            text-align: center;
+        }
+        .bord{
+            text-align: center;
+
+        }
+        td {
+            border:  5px solid #333;
+            height:  100px;
+            width:  100px;
+            text-align:  center;
+            vertical-align:  middle;
+            font-family:  "Comic Sans MS", cursive, sans-serif;
+            font-size:  70px;
+            cursor: pointer;
+        }
+
+        table {
+            border-collapse: collapse;
+            position: absolute;
+            left: 63%;
+            margin-left: -155px;
+            top: 270px;
+
+
+           
+        }
+
+        table tr:first-child td {
+            border-top: 0;
+        }
+
+        table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        table tr td:first-child {
+            border-left: 0;
+        }
+
+        table tr td:last-child {
+            border-right: 0;
+        }
+
+        .endgame {
+          display: none;
+          width: 756px;
+          top: 130px;
+          background-color: rgba(0,0,0,0.8);
+          position: absolute;
+          left: 42%;
+          margin-left: -100px;
+          padding-top: 50px;
+          padding-bottom: 50px;
+          text-align: center;
+          border-radius: 5px;
+          color: white;
+          font-size: 2em;
+          height: 490px;
+        }
+        .endgame2 {
+          display: none;
+          width: 756px;
+          top: 130px;
+          background-color: rgba(0,0,0,0.8);
+          position: absolute;
+          left: 42%;
+          margin-left: -100px;
+          padding-top: 50px;
+          padding-bottom: 50px;
+          text-align: center;
+          border-radius: 5px;
+          color: white;
+          font-size: 2em;
+          height: 490px;
+        }
+        .menu_btns{
+            padding: 20px;
+            margin-bottom: 18px; 
+            background-color: teal;
+            color: white;
+            border-style: none;
+            border-radius: 25px;
+            border-color: white;
+            font-family:  "Comic Sans MS", cursive, sans-serif;
+            font-size:  20px;
+            cursor: pointer;
+        }
+        #restart_btn{
+            margin-top: 10px;
+            padding: 20px;
+            background-color: teal;
+            border-radius: 50px;
+            border-style: none;
+            font-family:  "Comic Sans MS", cursive, sans-serif;
+            font-size:  20px;
+            color: white;
+            cursor: pointer;
+            margin-top: 400px;
+            margin-left: 28px;
+
+        }
+          #restart_btn2{
+            margin-top: 10px;
+            padding: 20px;
+            background-color: teal;
+            border-radius: 50px;
+            border-style: none;
+            font-family:  "Comic Sans MS", cursive, sans-serif;
+            font-size:  20px;
+            color: white;
+            cursor: pointer;
+            margin-top: 400px;
+            margin-left: 28px;
+
+        }
+        #reset_btn{
+             margin-top: 10px;
+            padding: 30px;
+            background-color: teal;
+            border-radius: 50px;
+            border-style: none;
+            font-family:  "Comic Sans MS", cursive, sans-serif;
+            font-size:  20px;
+            color: white;
+            cursor: pointer;
+        }
+        footer{
+            background-color: darkgreen;
+            border-radius: 50px;
+            width: 90%;
+            margin-top: 610px;
+            margin-left: 65px;
+            height: 100px;
+            text-align: center;
+        }
+        #first_name{
+            margin-right: 70px;
+            color: blue;
+        }
+        #second_name{
+            margin-left: : 70px;
+            color: red;
+        }
+        #player1_name{
+            border-color: rgba(0, 0, 255,0.9);
+        }
+          #player2_name{
+            border-color: rgba(255,0,0,0.9);
+        }
+
+    </style>
+</head>
+<body>
+    <header class="main_head">
+        <h1 id="head_1">Lets play tic tac toe !</h1>
+    </header>
+    <section id="box1">
+        <div id="menu">
+            <div id="choose_mode">
+                <h2 id="choose_mode_heading">Select game mode</h2>
+                 <button id="1player" class="menu_btns">1 player</button>
+                 <button id="2player" class="menu_btns">2 players</button>
+            </div>
+            <div id="label">
+                <label for="player1_name" id="first_name">Player 1</label>
+                <label for="player2_name" id="second_name">Player 2</label>
+            </div>
+            <div id="inputs">
+                <input type="text" id="player1_name" placeholder="Player 1 name.." >
+                <input type="text" id="player2_name" placeholder="Player 2 name.."  >
+            </div>
+            <div id="choose_icon2">
+                <h2 id="choose_icon_heading">Select player 1 Icon :)</h2>
+                <button id="icon_x2" class="menu_btns">O</button>
+                <button id="icon_o2" class="menu_btns">X</button> 
+            </div>
+            
+            <div id="choose_icon">
+                <h2 id="choose_icon_heading">Select your Icon :)</h2>
+                <button id="icon_x" class="menu_btns">X</button>
+                <button id="icon_o" class="menu_btns">O</button> 
+            </div>
+            
+
+            <div id="reset">
+                <button id="reset_btn" class="menu_btn">Reset game</button> 
+            </div>
+            
+        </div>
+        
+    </section>
+    <section id="box2">
+        <div id="sub_head">
+            <h1 id="game_bord">Game bord</h1>
+            <div id="player_turn_div">
+                <p id="player_turn"></p>
+            </div>
+        </div>
+        <div class="bord">
+            <table>
+                <tr>
+                    <td class="cell" id="0"></td>
+                    <td class="cell" id="1"></td>
+                    <td class="cell" id="2"></td>
+                </tr>
+                <tr>
+                    <td class="cell" id="3"></td>
+                    <td class="cell" id="4"></td>
+                    <td class="cell" id="5"></td>
+                </tr>
+                <tr>
+                    <td class="cell" id="6"></td>
+                    <td class="cell" id="7"></td>
+                    <td class="cell" id="8"></td>
+                </tr>
+            </table>
+        </div>
+       
+        
+    </section>
+    <div class="endgame">
+        <div class="text"></div>
+        <button id="restart_btn"  onClick="startGame()">Restart Game</button>
+    </div>
+    <div class="endgame2">
+        <div class="text2"></div>
+        <button id="restart_btn2"  onClick="startGame2()">Restart Game</button>
+    </div>
+    <footer>
+        <p>enjoy the game</p>
+    </footer>
+
+<script type="text/javascript" src="tic_tac_script.js"></script>
+</body>
+</html>
